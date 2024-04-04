@@ -16,11 +16,17 @@ def age_map(age):
     
     return age
 
-def get_item_index(feature, user_id):
-    item_feature = feature[user_id]
+def get_item_index(feature, item_id):
+    # 商品特征提取
+    item_feature = feature[item_id]
+    # 如果 item_feature 是一个包含 1 的一维数组，这个操作将找到所有值为 1 的元素的位置索引，但不包括数组中最后一个值为 1 的元素的位置索引。
+    # 这里为什么不包括最后一个索引？
     index = np.where(item_feature == 1)[0][ : -1]
+    # 第一个性别
     gender = index[0]
+    # 第二个jacket
     jacket = index[1] - 2
+    # 第三个颜色
     color = index[2] - 18
     
     return gender, jacket, color
